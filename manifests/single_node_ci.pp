@@ -226,6 +226,15 @@ class openstackci::single_node_ci (
     revision             => $zuul_revision,
   }
 
+  file { '/home/zuul/.ssh/config':
+    ensure  => present,
+    owner   => 'zuul',
+    group   => 'zuul',
+    mode    => '0644',
+    content => template('openstackci/ssh_config.erb'),
+    require => File['/home/zuul/.ssh'],
+  }
+
   class { '::openstackci::nodepool':
     mysql_root_password       => $mysql_root_password,
     mysql_password            => $mysql_nodepool_password,
