@@ -16,6 +16,7 @@ class openstackci::jenkins_master (
   $jenkins_ssh_public_key  = '',
   $manage_jenkins_jobs     = false,
   $jenkins_url             = 'http://localhost:8080',
+  $jenkins_vhost           = true,
   $jjb_update_timeout      = 1200,
   $jjb_git_url             = 'https://git.openstack.org/openstack-infra/jenkins-job-builder',
   $jjb_git_revision        = 'master',
@@ -36,6 +37,7 @@ class openstackci::jenkins_master (
     ssl_chain_file_contents => $ssl_chain_file_contents,
     jenkins_ssh_private_key => $jenkins_ssh_private_key,
     jenkins_ssh_public_key  => $jenkins_ssh_public_key,
+    use_httpd               => $jenkins_vhost,
   }
 
   jenkins::plugin { 'build-timeout':

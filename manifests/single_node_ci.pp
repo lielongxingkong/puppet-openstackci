@@ -185,6 +185,7 @@ class openstackci::single_node_ci (
     jenkins_url             => 'http://127.0.0.1:8080/',
     jenkins_username        => $jenkins_username,
     jenkins_password        => $jenkins_password,
+    jenkins_vhost           => false,
     project_config_repo     => $project_config_repo,
     log_server              => $log_server,
   }
